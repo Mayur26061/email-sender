@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>Email Sender</title>
+        <style type="text/css">
+            .header{
+                height: 100px;
+                border: 1px solid black;
+                background-color: black;
+
+            }
+            h1{
+                color: beige;
+                text-align: center;
+               
+            }
+            h5{
+                color: beige;
+                text-align: center;
+            }
+            .footer{
+                height: 80px;
+                border: 1px solid black;
+                background-color: black;
+            }
+            .content{
+                height: 520px;
+                border: 1px ;
+            }
+            input[type="text"]{
+                width: 300px;
+                height: 40px;
+                border-radius: 10px;
+            }
+            textarea{
+                border-radius: 10px;
+                width: 300px;
+                height: 100px;
+            }
+            input[type="submit"]{
+                width: 100px;
+                height: 40px;
+                border-radius: 15px;
+                color: white;
+                background-color: green;
+            }
+        
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Email Sender Web app</h1>
+        </div>
+        <div class="content">
+            <br>
+                        {% if messages %}
+           <p align="center">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+           </p>
+            {% endif %}
+            <br><br>
+            <form method="POST" action="/customer/email_info/">
+                {% csrf_token %}
+            <table align="center"  cellspacing="0" cellpadding="10">
+                <tr>
+                    <td>To</td>
+                    <td><input type="text" name="to"></td>
+                </tr>
+                <tr>
+                    <td>Subject</td>
+                    <td><input type="text" name="subject"></td>
+                </tr>
+                <tr>
+                    <td>Message</td>
+                    <td>
+                        <textarea name="message"></textarea>
+                    </td>
+                
+                </tr>
+                <tr><td colspan="2" align="center">
+                    <input type="submit" name="submit" value="Submit">
+                </td></tr>
+            </table>
+        </form>
+        </div>
+        <div class="footer">
+            <H5>&copy;copyright  privacy Send feedback</H5>
+        </div>
+    </body>
+</html>
